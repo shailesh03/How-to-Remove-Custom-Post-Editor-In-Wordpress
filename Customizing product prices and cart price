@@ -1,0 +1,14 @@
+// Add This Code For Function.php
+
+add_filter('woocommerce_get_price', 'product_custom_price', 10, 2);
+function product_custom_price($price, $product) {
+	$custom_price_add = get_post_meta($product->id, 'addprice', true); 
+	$custom_price = $product->get_regular_price();
+	$addprice_new = ($custom_price*$custom_price_add)/100;
+	
+	if(!empty($custom_price_add)){
+		return $custom_price + $addprice_new; 
+    } else {
+       return $custom_price; 
+    } 
+}   
