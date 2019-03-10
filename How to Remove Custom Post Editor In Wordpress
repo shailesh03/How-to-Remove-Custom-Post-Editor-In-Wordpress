@@ -1,0 +1,10 @@
+// Add This Code For Function.php
+
+add_action( 'load-post.php', 'remove_post_type_edit_screen', 10 );
+function remove_post_type_edit_screen() {
+    global $typenow;
+
+    if($typenow && $typenow === 'Post Type Name'){
+        remove_post_type_support( 'Post Type Name', 'editor' );
+    }
+}
