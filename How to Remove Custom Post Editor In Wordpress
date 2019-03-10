@@ -1,0 +1,8 @@
+add_action( 'load-post.php', 'remove_post_type_edit_screen', 10 );
+function remove_post_type_edit_screen() {
+    global $typenow;
+
+    if($typenow && $typenow === 'nomination-form'){
+        remove_post_type_support( 'nomination-form', 'editor' );
+    }
+} 
